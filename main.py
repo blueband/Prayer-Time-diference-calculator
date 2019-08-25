@@ -1,5 +1,5 @@
 import openpyxl, os, sys, itertools
-from exelutility import xlsx_cell, calcute_place
+from exelutility import xlsx_cell, calc_value_cell
 from util   import twenty4_twelve, getMinute, calc_diff, am_pm_remover, data_extract
 
 dir_src = os.path.dirname(__file__)
@@ -216,18 +216,16 @@ if __name__ == '__main__':
 
     REFERENCE_DATA = ref_data
     Ilorin, town1, town2, town3, town4, town5, town6 = ref_calc_place(calc_datalength,calc_data)
-    getMinute(list_split(Ilorin, town1))
-    getMinute(list_split(Ilorin, town2))
-    getMinute(list_split(Ilorin, town3))
-    getMinute(list_split(Ilorin, town4))
-    getMinute(list_split(Ilorin, town5))
-    getMinute(list_split(Ilorin, town6))
-    getMinute(list_split(Ilorin, Ilorin))
+    listobj = list_split(Ilorin, town1)
+    calc_value_cell(listobj, 7)
+    # getMinute(list_split(Ilorin, town1))
+    # getMinute(list_split(Ilorin, town2))
+    # getMinute(list_split(Ilorin, town3))
+    # getMinute(list_split(Ilorin, town4))
+    # getMinute(list_split(Ilorin, town5))
+    # getMinute(list_split(Ilorin, town6))
+    # getMinute(list_split(Ilorin, Ilorin))
 
-
-    # xlsx_cell(ref_data)
-
-    # print(calc_location_content)
-    # xlxsfield_creator(days_data, calc_location)
-
+    # print(ref_data)
+    xlsx_cell(ref_data)
 

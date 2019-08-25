@@ -38,27 +38,45 @@ def xlsx_cell(listobj, cell_spacer=0, ):
     wkbook.save('data.xlsx')
 
 
-def calcute_place(listobj):
-    wkbook, current_sheet = create_workbook()
-    num_town = len(listobj)
-    num_row = len(listobj[0])
-    town = 0
-    town_column = 7
-    town_row = 0
-    while town < num_town:
-        while town_row < num_row:
-            current_sheet.cell(row=town_row + 4, column=town_column+1).value = listobj[num_row][0]
-            current_sheet.cell(row=town_row + 4, column=town_column+2).value = listobj[num_row][1]
-            current_sheet.cell(row=town_row + 4, column=town_column+3).value = listobj[num_row][2]
-            current_sheet.cell(row=town_row + 4, column=town_column+4).value = listobj[num_row][3]
-            current_sheet.cell(row=town_row + 4, column=town_column+5).value = listobj[num_row][4]
-            current_sheet.cell(row=town_row + 4, column=town_column+6).value = listobj[num_row][5]
-            town_row += 1
-        town_column += town_column
-        town += 1
-        xlxsfield_creator(current_sheet)
 
-        wkbook.save('data.xlsx')
+def calc_value_cell(listobj, cell_spacer):
+    wkbook, current_sheet = create_workbook()
+    xlsx_row = len(listobj)
+    num_row = 0
+
+    while num_row < xlsx_row:
+        for value in (listobj[num_row]):
+            current_sheet.cell(row=num_row + 4, column=1 + cell_spacer).value = str(value[0])
+            current_sheet.cell(row=num_row + 4, column=2 + cell_spacer).value = str(value[1])
+            current_sheet.cell(row=num_row + 4, column=3 + cell_spacer).value = str(value[2])
+            current_sheet.cell(row=num_row + 4, column=4 + cell_spacer).value = str(value[3])
+            current_sheet.cell(row=num_row + 4, column=5 + cell_spacer).value = str(value[4])
+            num_row += 1
+
+    # wkbook.save('data.xlsx')
+
+
+# def calcute_place(listobj):
+#     wkbook, current_sheet = create_workbook()
+#     num_town = len(listobj)
+#     num_row = len(listobj[0])
+#     town = 0
+#     town_column = 7
+#     town_row = 0
+#     while town < num_town:
+#         while town_row < num_row:
+#             current_sheet.cell(row=town_row + 4, column=town_column+1).value = listobj[num_row][0]
+#             current_sheet.cell(row=town_row + 4, column=town_column+2).value = listobj[num_row][1]
+#             current_sheet.cell(row=town_row + 4, column=town_column+3).value = listobj[num_row][2]
+#             current_sheet.cell(row=town_row + 4, column=town_column+4).value = listobj[num_row][3]
+#             current_sheet.cell(row=town_row + 4, column=town_column+5).value = listobj[num_row][4]
+#             current_sheet.cell(row=town_row + 4, column=town_column+6).value = listobj[num_row][5]
+#             town_row += 1
+#         town_column += town_column
+#         town += 1
+#         xlxsfield_creator(current_sheet)
+#
+#         wkbook.save('data.xlsx')
 
 # xlxsfield_creator('ee', 'wer')
 

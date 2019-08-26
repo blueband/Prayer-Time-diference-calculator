@@ -21,10 +21,11 @@ def xlxsfield_creator(current_sheet, cell_spacer=0):
     current_sheet.cell(row=3, column=6 + cell_spacer).value = 'Isha'
 
 
-def xlsx_cell(listobj, cell_spacer=0, ):
+def xlsx_cell(listobj, TOWN_BUCKET, cell_spacer=0):
     wkbook, current_sheet = create_workbook()
     xlsx_row = len(listobj)
     num_row = 0
+
     while num_row < xlsx_row:
         current_sheet.cell(row=num_row + 4, column=1+cell_spacer).value = listobj[num_row][0]
         current_sheet.cell(row=num_row + 4, column=2+cell_spacer).value = listobj[num_row][1]
@@ -34,6 +35,19 @@ def xlsx_cell(listobj, cell_spacer=0, ):
         current_sheet.cell(row=num_row + 4, column=6+cell_spacer).value = listobj[num_row][5]
         num_row += 1
     xlxsfield_creator(current_sheet,cell_spacer)
+
+    ######## Looping to extract value from TOWN_BUCKET here
+    row_num = 0
+    for town in TOWN_BUCKET:
+        cell_spacer = int(town[1])
+        town = town[0]
+        while row_num < len(town):
+            current_sheet.cell(row=row_num + 4, column=1 + cell_spacer).value = str(town[row_num][0])
+            current_sheet.cell(row=row_num + 4, column=2 + cell_spacer).value = str(town[row_num][1])
+            current_sheet.cell(row=row_num + 4, column=3 + cell_spacer).value = str(town[row_num][2])
+            current_sheet.cell(row=row_num + 4, column=4 + cell_spacer).value = str(town[row_num][3])
+            current_sheet.cell(row=row_num + 4, column=5 + cell_spacer).value = str(town[row_num][4])
+            row_num += 1
 
     wkbook.save('data.xlsx')
 

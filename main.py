@@ -8,12 +8,12 @@ REFERENCE_LOCATION = 'ilorin'
 REFERENCE_DATA = ''
 
 NUMNER_FILES = 0
+TOWN_BUCKET = []
 
 def contentExtractor(filename):
     clean_data_no_empty = []
     with open(filename, 'r') as data:
         datacontent = data.read()
-
     dataLine = datacontent.splitlines()
     for data in dataLine:
         if len(data) == 0:continue
@@ -36,6 +36,14 @@ def getFileinFolder(dir,list_extn='.txt'):
                 files.add(os.path.join(p, file))
     return files
 
+def getFileName(file):
+    find_slash = file.find('\\')
+    last_word = file[find_slash+1:]
+    dot_mark = last_word.find('.')
+    locationName = last_word[:dot_mark]
+
+    return locationName
+
 def calc_location_content(fileList):
     """This function open each file in a given list and return the content in a single list object"""
     bucket = []
@@ -43,16 +51,22 @@ def calc_location_content(fileList):
     for file in fileList:
         if  REFERENCE_LOCATION.lower() in file.lower():continue
         else:
+            locationName = getFileName(file)
             content = contentExtractor(file)
-            bucket.append(content)
+            bucket.append([content, locationName])
+
     for item in bucket:
         final_bucket.append(datelocation(item))
-    return len(final_bucket), final_bucket
+
+    return len(final_bucket), final_bucket,
 
 def current_location_file(files):
-    file = getReferenceplace(files)
-    current_location_content = contentExtractor(file)
-    current_location_content = datelocation(current_location_content)
+    location_content = []
+    file = getReferenceplace(files) # This return ONLY Ilorin File
+    locationName = getFileName(file)
+    content = contentExtractor(file)
+    location_content.append([content, locationName])
+    current_location_content = datelocation(location_content)
     return current_location_content
 
 def getReferenceplace(files):
@@ -67,11 +81,17 @@ def getReferenceplace(files):
 def datelocation(listobj):
     '''Dicovering where extraction should commnece'''
     date_collection = []
+    if len(listobj) == 1:
+        locationName = listobj[0][1]
+        listobj = listobj[0][0]
+    else:
+        locationName = listobj[1]
+        listobj = listobj[0]
     for eachline in listobj:
         if eachline[2] != '/':continue
         else:
             date_collection.append(eachline)
-    return date_collection
+    return ([date_collection, locationName])
 
 def getPreData(*args):
     '''This function accept list object of form
@@ -95,21 +115,25 @@ def getPreData(*args):
 def getDatavalue(*args):
     '''This method extract data from given list obj and return another list object'''
     data_container = []
-    if args[0] == 0:
-        datalenght = len(args[1])
+    sentry = int(args[0])
+    data = args[1][0]
+    data_town = args[1][1]
+    if sentry == 0:
+        datalenght = len(data)
     else:
-        datalenght = args[0]
-    if args[0] != 0:
-        data_container.append(getPreData(args[1][0]))
-        data_container.append(getPreData(args[1][1]))
-        data_container.append(getPreData(args[1][2]))
-        data_container.append(getPreData(args[1][3]))
-        data_container.append(getPreData(args[1][4]))
-        data_container.append(getPreData(args[1][5]))
-    else:
-        data = getPreData(args[1])
-        data_container.extend(data)
+        datalenght = sentry
 
+    if sentry != 0:
+        data = args[1]
+        data_container.append([getPreData(data[0][0]), data[0][1]])
+        data_container.append([getPreData(data[1][0]), data[1][1]])
+        data_container.append([getPreData(data[2][0]), data[2][1]])
+        data_container.append([getPreData(data[3][0]), data[3][1]])
+        data_container.append([getPreData(data[4][0]), data[4][1]])
+        data_container.append([getPreData(data[5][0]), data[5][1]])
+    else:
+        data = getPreData(data)
+        data_container.append([data, data_town])
     return data_container,  datalenght
 
 
@@ -117,14 +141,14 @@ def locationExtractor(listobj):
     '''This extract Location from file
     We consume list object and return various type of data'''
 
-    Location = set()
+    Location = []
     for line in listobj:
         if not line.startswith('-'):continue
         else:
             if line[3] != 'I':continue
             else:
                 word = line.split(' ')
-                Location.add(word[2])
+                Location.append(word[2])
 
     return Location
 
@@ -204,28 +228,36 @@ def explode_calc_place(listobj):
 
 if __name__ == '__main__':
     files = getFileinFolder(dir_src)
+    # ref_location = (locationExtractor(current_location_file(files)))
+
     ref_days_data = current_location_file(files)
     number_files, calc_days_data = calc_location_content(files)
+    # print('what is going on here : ', calc_days_data)
 
-    # print(calc_days_data)
-    # print('ilorin : ',ref_days_data)
-
-    ref_location = (locationExtractor(current_location_file(files)))
     ref_data, ref_datalength  = getDatavalue(0,ref_days_data)
     calc_data, calc_datalength  = getDatavalue(number_files, calc_days_data)
-
-    REFERENCE_DATA = ref_data
-    Ilorin, town1, town2, town3, town4, town5, town6 = ref_calc_place(calc_datalength,calc_data)
-    listobj = list_split(Ilorin, town1)
-    calc_value_cell(listobj, 7)
+    print(calc_data)
+    # REFERENCE_DATA = ref_data
+    # Ilorin, town1, town2, town3, town4, town5, town6 = ref_calc_place(calc_datalength,calc_data)
+    # listobj1 = list_split(Ilorin, town1)
+    # calc_value_cell(listobj1, 7)
     # getMinute(list_split(Ilorin, town1))
-    # getMinute(list_split(Ilorin, town2))
-    # getMinute(list_split(Ilorin, town3))
-    # getMinute(list_split(Ilorin, town4))
-    # getMinute(list_split(Ilorin, town5))
-    # getMinute(list_split(Ilorin, town6))
-    # getMinute(list_split(Ilorin, Ilorin))
+    # listobj2 = list_split(Ilorin, town2)
+    # listobj3 = list_split(Ilorin, town3)
+    # listobj4 = list_split(Ilorin, town4)
+    # listobj5 = list_split(Ilorin, town5)
+    # listobj6 = list_split(Ilorin, town6)
+    # ilorin = list_split(Ilorin, Ilorin)
 
-    # print(ref_data)
-    xlsx_cell(ref_data)
+
+
+# TOWN_BUCKET.append([listobj6[0],7])
+# TOWN_BUCKET.append([listobj2[0],12])
+
+# xlsx_cell(ref_data, TOWN_BUCKET)
+    # calc_value_cell(listobj, 7)
+#
+#
+# print('current Town',listobj1)
+# print('Ilorin', ilorin)
 

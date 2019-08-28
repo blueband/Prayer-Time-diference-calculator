@@ -1,11 +1,11 @@
 import openpyxl, os, sys, itertools
-from exelutility import xlsx_cell, calc_value_cell
+from exelutility import xlsx_cell #calc_value_cell
 from util   import twenty4_twelve, getMinute, calc_diff, am_pm_remover, time_in_minutes
 
 dir_src = os.path.dirname(__file__)
 
 REFERENCE_LOCATION = 'ilorin'
-REFERENCE_DATA = ''
+REFERENCE_DATA = None
 
 NUMNER_FILES = 0
 TOWN_BUCKET = []
@@ -208,18 +208,6 @@ def list_split(*args):
     return [daily_prayer,calc_town], len(daily_prayer)
 
 
-
-    # print('what is in k here :',k[1])
-
-    # for ref, cal in zip(args[0], args[1]):
-    #     subuh = calc_diff(ref[0], cal[0])
-    #     Zuhr = calc_diff(ref[1], cal[1])
-    #     Asri = calc_diff(ref[2], cal[2])
-    # print(subuh)
-    # print(Zuhr)
-    # print(Asri)
-
-
 def explode_calc_place(listobj):
     for place in listobj:
         return place
@@ -250,23 +238,10 @@ if __name__ == '__main__':
     listobj5 = list_split(ref_town, town5)
     listobj6 = list_split(ref_town, town6)
     Default_town = list_split(ref_town, ref_town)
-    #
-    # print(listobj1)
-    # print(listobj2)
-    # print(listobj3)
-    # print(listobj4)
-    # print(listobj5)
-    # print(listobj6)
-    # print(Default_town)
 
 
-
-    print(REFERENCE_DATA)
     TOWN_BUCKET.append([listobj1,listobj2,listobj3,listobj4,listobj5,listobj6])
     xlsx_cell(REFERENCE_DATA, TOWN_BUCKET)
-    # calc_value_cell(listobj, 7)
-#
-#
-# print('current Town',listobj1)
-# print('Ilorin', ilorin)
 
+
+ # TODO   adding README File

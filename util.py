@@ -78,9 +78,16 @@ def getMinute(*args):
 #
 #     return (int(reference_place) - int(other_place))
 
-def data_extract(*args):
+def time_in_minutes(*args):
+    '''This function consume time in format 05:00pm and return time in minutes equivalent
+    '''
     town_minute = [] # This hold time in minutes for each prayer daily
-    for date_ref, date_calc in zip(args[0], args[1]):
+    ref_town_data = args[0][0][0]
+    # ref_town_name = args[0][0][1]
+    other_location_data = args[1][0]
+    other_location_name = args[1][1]
+
+    for date_ref, date_calc in zip(ref_town_data, other_location_data):
         # Confirming that the date match up before the need house chore below
         if date_ref[0] == date_calc[0]:  # checking for Date matchup
             # Taking care of time of format 05:00am, by removing the trail 'am' or 'pm'
@@ -91,4 +98,4 @@ def data_extract(*args):
                      hours_minutes(am_pm_remover(date_calc[3][1:])), hours_minutes(am_pm_remover(date_calc[4][1:])),
                      hours_minutes(am_pm_remover(date_calc[5][1:]))])
 
-    return town_minute
+    return [town_minute,other_location_name]

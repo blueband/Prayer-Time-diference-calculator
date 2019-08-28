@@ -1,6 +1,6 @@
 import openpyxl, os, sys, itertools
 from exelutility import xlsx_cell, calc_value_cell
-from util   import twenty4_twelve, getMinute, calc_diff, am_pm_remover, data_extract
+from util   import twenty4_twelve, getMinute, calc_diff, am_pm_remover, time_in_minutes
 
 dir_src = os.path.dirname(__file__)
 
@@ -153,36 +153,29 @@ def locationExtractor(listobj):
     return Location
 
 def ref_calc_place(*args):
-    if args[0] < len(args[1]):
-        return args[1]
+    if (type(args[0])!= int) or (type(args[0]) == list):
+        return time_in_minutes(REFERENCE_DATA,args[0][0])
     else:
         return town_data(args[0], args[1])
 
 
 def town_data(*args):
     """Three parameter will be supply and """
-
-    ref_data = data_extract(REFERENCE_DATA,REFERENCE_DATA)
+    datalength = len(args[1])
     kount = 0
-    while kount < args[0]:
+    while kount < datalength:
         if kount == 0:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town0 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town0 = time_in_minutes(REFERENCE_DATA, args[1][kount])
         elif kount == 1:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town1 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town1 = time_in_minutes(REFERENCE_DATA, args[1][kount])
         elif kount == 2:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town2 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town2 = time_in_minutes(REFERENCE_DATA, args[1][kount])
         elif kount == 3:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town3 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town3 = time_in_minutes(REFERENCE_DATA, args[1][kount])
         elif kount == 4:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town4 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town4 = time_in_minutes(REFERENCE_DATA, args[1][kount])
         elif kount == 5:
-            next_town = list_unpacking(kount, args[1])
-            current_next_town5 = data_extract(REFERENCE_DATA, next_town)
+            current_next_town5 = time_in_minutes(REFERENCE_DATA, args[1][kount])
 
         kount += 1
 
@@ -197,17 +190,22 @@ def list_unpacking(*args):
 
 def list_split(*args):
     daily_prayer = []
-    for ref, calc in zip(args[0], args[1]):
-        for unit_ref, unit_calc in zip(ref, calc):
-            subuh = calc_diff(unit_ref, unit_calc)
-            Zuhr = calc_diff(unit_ref, unit_calc)
-            Asri = calc_diff(unit_ref, unit_calc)
-            Magrib = calc_diff(unit_ref, unit_calc)
-            Isha = calc_diff(unit_ref, unit_calc)
+    # print('this is data suply as ref : ', args[0][0])
+    # print('this is data suply as calc : ', args[1][0])
+
+    ref_data = args[0][0]
+    calc_data = args[1][0]
+    calc_town = args[1][1]
+    for ref, calc in zip(ref_data, calc_data):
+        oneday_prayer = [*(map(calc_diff, ref,calc))]
+        subuh = oneday_prayer[0]
+        Zuhr = oneday_prayer[1]
+        Asri = oneday_prayer[2]
+        Magrib = oneday_prayer[3]
+        Isha = oneday_prayer[4]
         daily_prayer.append([subuh,Zuhr,Asri,Magrib,Isha])
 
-
-    return daily_prayer, len(daily_prayer)
+    return [daily_prayer,calc_town], len(daily_prayer)
 
 
 
@@ -236,25 +234,36 @@ if __name__ == '__main__':
 
     ref_data, ref_datalength  = getDatavalue(0,ref_days_data)
     calc_data, calc_datalength  = getDatavalue(number_files, calc_days_data)
-    print(calc_data)
-    # REFERENCE_DATA = ref_data
-    # Ilorin, town1, town2, town3, town4, town5, town6 = ref_calc_place(calc_datalength,calc_data)
-    # listobj1 = list_split(Ilorin, town1)
-    # calc_value_cell(listobj1, 7)
-    # getMinute(list_split(Ilorin, town1))
-    # listobj2 = list_split(Ilorin, town2)
-    # listobj3 = list_split(Ilorin, town3)
-    # listobj4 = list_split(Ilorin, town4)
-    # listobj5 = list_split(Ilorin, town5)
-    # listobj6 = list_split(Ilorin, town6)
-    # ilorin = list_split(Ilorin, Ilorin)
+    REFERENCE_DATA = ref_data
+    # print(REFERENCE_DATA[0][0])  # The data for Reference Location
+    #print(REFERENCE_DATA[0][1]) # this output Reference city name
+
+    ref_town = ref_calc_place(REFERENCE_DATA)
+
+    Ilorin, town1, town2, town3, town4, town5, town6 = ref_calc_place(calc_datalength,calc_data)
+
+
+    listobj1 = list_split(ref_town, town1)
+    listobj2 = list_split(ref_town, town2)
+    listobj3 = list_split(ref_town, town3)
+    listobj4 = list_split(ref_town, town4)
+    listobj5 = list_split(ref_town, town5)
+    listobj6 = list_split(ref_town, town6)
+    Default_town = list_split(ref_town, ref_town)
+    #
+    # print(listobj1)
+    # print(listobj2)
+    # print(listobj3)
+    # print(listobj4)
+    # print(listobj5)
+    # print(listobj6)
+    # print(Default_town)
 
 
 
-# TOWN_BUCKET.append([listobj6[0],7])
-# TOWN_BUCKET.append([listobj2[0],12])
-
-# xlsx_cell(ref_data, TOWN_BUCKET)
+    print(REFERENCE_DATA)
+    TOWN_BUCKET.append([listobj1,listobj2,listobj3,listobj4,listobj5,listobj6])
+    xlsx_cell(REFERENCE_DATA, TOWN_BUCKET)
     # calc_value_cell(listobj, 7)
 #
 #

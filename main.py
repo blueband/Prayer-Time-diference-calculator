@@ -57,7 +57,6 @@ def calc_location_content(fileList):
 
     for item in bucket:
         final_bucket.append(datelocation(item))
-
     return len(final_bucket), final_bucket,
 
 def current_location_file(files):
@@ -116,6 +115,7 @@ def getDatavalue(*args):
     '''This method extract data from given list obj and return another list object'''
     data_container = []
     sentry = int(args[0])
+    print('what is here as sentry',sentry)
     data = args[1][0]
     data_town = args[1][1]
     if sentry == 0:
@@ -124,6 +124,7 @@ def getDatavalue(*args):
         datalenght = sentry
 
     if sentry != 0:
+        # TODO: This section need to be refactor to return dynamic number of value
         data = args[1]
         data_container.append([getPreData(data[0][0]), data[0][1]])
         data_container.append([getPreData(data[1][0]), data[1][1]])
@@ -163,6 +164,8 @@ def town_data(*args):
     """Three parameter will be supply and """
     datalength = len(args[1])
     kount = 0
+    # TODO : need to rewrite this function to be dynamic in number of location to be return
+
     while kount < datalength:
         if kount == 0:
             current_next_town0 = time_in_minutes(REFERENCE_DATA, args[1][kount])
@@ -218,8 +221,7 @@ if __name__ == '__main__':
 
     ref_days_data = current_location_file(files)
     number_files, calc_days_data = calc_location_content(files)
-    # print('what is going on here : ', calc_days_data)
-
+    print('how many', number_files)
     ref_data, ref_datalength  = getDatavalue(0,ref_days_data)
     calc_data, calc_datalength  = getDatavalue(number_files, calc_days_data)
     REFERENCE_DATA = ref_data

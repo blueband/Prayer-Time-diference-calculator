@@ -1,0 +1,136 @@
+<application>
+  <component name="ProjectJdkTable">
+    <jdk version="2">
+      <name value="Python 3.5.1 virtualenv at C:\TensorTut\tensorflow" />
+      <type value="Python SDK" />
+      <version value="Python 3.5.1" />
+      <homePath value="C:\TensorTut\tensorflow\Scripts\python.exe" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file://C:/TensorTut/tensorflow/Lib" />
+            <root type="simple" url="file://C:/TensorTut/tensorflow/Scripts" />
+            <root type="simple" url="file://E:/winPython/python-3.5.1.amd64/Lib" />
+            <root type="simple" url="file://E:/winPython/python-3.5.1.amd64/DLLs" />
+            <root type="simple" url="file://C:/TensorTut/tensorflow" />
+            <root type="simple" url="file://C:/TensorTut/tensorflow/Lib/site-packages" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-514255518" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.5" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.4" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/2and3" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="Python 3.5.4 (E:\winPython\python.exe)" />
+      <type value="Python SDK" />
+      <version value="Python 3.5.4" />
+      <homePath value="E:\winPython\python.exe" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file://E:/winPython/DLLs" />
+            <root type="simple" url="file://E:/winPython/Lib" />
+            <root type="simple" url="file://E:/winPython" />
+            <root type="simple" url="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages" />
+            <root type="simple" url="file://E:/winPython/Lib/site-packages" />
+            <root type="simple" url="file://E:/winPython/Lib/site-packages/win32" />
+            <root type="simple" url="file://E:/winPython/Lib/site-packages/win32/lib" />
+            <root type="simple" url="file://E:/winPython/Lib/site-packages/pythonwin" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-355244591" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.5" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.4" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/2and3" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="Python 3.5.4 virtualenv at C:\Users\BlueBerry\Documents\dhikrullah" />
+      <type value="Python SDK" />
+      <version value="Python 3.5.4" />
+      <homePath value="C:\Users\BlueBerry\Documents\dhikrullah\Scripts\python.exe" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Lib" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Scripts" />
+            <root type="simple" url="file://E:/winPython/Lib" />
+            <root type="simple" url="file://E:/winPython/DLLs" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Lib/site-packages" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Lib/site-packages/win32" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Lib/site-packages/win32/lib" />
+            <root type="simple" url="file://$USER_HOME$/Documents/dhikrullah/Lib/site-packages/pythonwin" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/1497538493" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.5" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.4" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/2and3" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="Python 3.5.4 virtualenv at C:\Users\BlueBerry\Documents\private_DevEnv" />
+      <type value="Python SDK" />
+      <version value="Python 3.5.4" />
+      <homePath value="C:\Users\BlueBerry\Documents\private_DevEnv\Scripts\python.exe" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Lib" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Scripts" />
+            <root type="simple" url="file://E:/winPython/Lib" />
+            <root type="simple" url="file://E:/winPython/DLLs" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Lib/site-packages" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Lib/site-packages/win32" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Lib/site-packages/win32/lib" />
+            <root type="simple" url="file://$USER_HOME$/Documents/private_DevEnv/Lib/site-packages/pythonwin" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-1012725415" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.5" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.4" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3.3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/3" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/2and3" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+  </component>
+</application>

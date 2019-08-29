@@ -1,0 +1,5 @@
+<application>
+  <component name="NotificationConfiguration" showBalloons="false">
+    <notification groupId="Power Save Mode" shouldLog="false" />
+  </component>
+</application>
